@@ -1,19 +1,11 @@
-# HTML
-# Archive your static HTML project and save it with the build record.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# azure-pipelines.yml
 
 trigger:
-- main
+  - main   # or your branch name
 
 pool:
-  vmImage: EC2-Ubuntu-Agent
+  name: EC2-Ubuntu-Agent   # Must match your self-hosted pool exactly
 
 steps:
-- script: echo "Running on self hosted EC2 agent"
-  displayName: "Echo test"
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(build.sourcesDirectory)'
-    includeRootFolder: false
-- task: PublishBuildArtifacts@1
+  - script: echo "Running on EC2 self-hosted agent"
+    displayName: "Test self-hosted agent"
